@@ -15,7 +15,7 @@ Class RequestCheckUtil
 	public static function checkNotNull($value,$fieldName) {
 		
 		if(self::checkEmpty($value)){
-			throw new Exception("client-check-error:Missing Required Arguments: " .$fieldName , 40);
+			throw new \Exception("client-check-error:Missing Required Arguments: " .$fieldName , 40);
 		}
 	}
 
@@ -25,7 +25,7 @@ Class RequestCheckUtil
 	 **/
 	public static function checkMaxLength($value,$maxLength,$fieldName){		
 		if(!self::checkEmpty($value) && mb_strlen($value , "UTF-8") > $maxLength){
-			throw new Exception("client-check-error:Invalid Arguments:the length of " .$fieldName . " can not be larger than " . $maxLength . "." , 41);
+			throw new \Exception("client-check-error:Invalid Arguments:the length of " .$fieldName . " can not be larger than " . $maxLength . "." , 41);
 		}
 	}
 
@@ -40,7 +40,7 @@ Class RequestCheckUtil
 
 		$list=preg_split("/,/",$value);
 		if(count($list) > $maxSize){
-				throw new Exception("client-check-error:Invalid Arguments:the listsize(the string split by \",\") of ". $fieldName . " must be less than " . $maxSize . " ." , 41);
+				throw new \Exception("client-check-error:Invalid Arguments:the listsize(the string split by \",\") of ". $fieldName . " must be less than " . $maxSize . " ." , 41);
 		}
 	}
 
@@ -56,7 +56,7 @@ Class RequestCheckUtil
 		self::checkNumeric($value,$fieldName);
 
 		if($value > $maxValue){
-				throw new Exception("client-check-error:Invalid Arguments:the value of " . $fieldName . " can not be larger than " . $maxValue ." ." , 41);
+				throw new \Exception("client-check-error:Invalid Arguments:the value of " . $fieldName . " can not be larger than " . $maxValue ." ." , 41);
 		}
 	}
 
@@ -72,7 +72,7 @@ Class RequestCheckUtil
 		self::checkNumeric($value,$fieldName);
 		
 		if($value < $minValue){
-				throw new Exception("client-check-error:Invalid Arguments:the value of " . $fieldName . " can not be less than " . $minValue . " ." , 41);
+				throw new \Exception("client-check-error:Invalid Arguments:the value of " . $fieldName . " can not be less than " . $minValue . " ." , 41);
 		}
 	}
 
@@ -82,7 +82,7 @@ Class RequestCheckUtil
 	 **/
 	protected static function checkNumeric($value,$fieldName) {
 		if(!is_numeric($value))
-			throw new Exception("client-check-error:Invalid Arguments:the value of " . $fieldName . " is not number : " . $value . " ." , 41);
+			throw new \Exception("client-check-error:Invalid Arguments:the value of " . $fieldName . " is not number : " . $value . " ." , 41);
 	}
 
 	/**
