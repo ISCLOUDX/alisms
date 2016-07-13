@@ -1,6 +1,8 @@
 <?php
 namespace iscms\AlismsSdk;
 
+use Exception;
+
 Class TopClient
 {
 	public $appkey;
