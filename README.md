@@ -61,7 +61,7 @@ php artisan vendor:publish
 
     public function index()
     {
-       $result=$this->sms->send("$phone","$name","$content",'$code');
+       $result=$this->sms->send("$phone","$name","$content","$code");
     }
 ```
 2. 返回执行发送的结果
