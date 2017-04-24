@@ -2,5 +2,5 @@
 
 interface SendSmsApi
 {
-    public function send($phone,$name,$content,$code);
+    public function send($phone, $name, $content, $code);
 }

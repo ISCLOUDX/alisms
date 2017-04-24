@@ -1,6 +1,9 @@
 <?php
+
 namespace iscms\Alisms;
+
 use Illuminate\Support\ServiceProvider;
+
 class AlidayuServiceProvider extends ServiceProvider
 {
     /**
@@ -22,9 +25,9 @@ class AlidayuServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('Iscloudx\alibigfish\SendSmsApi', 'Iscloudx\alibigfish\SendsmsPusher');
+        $this->app->bind(SendSmsApi::class, SendsmsPusher::class);
         $this->app->singleton('alisms', function ($app) {
-            return $app->make('Iscloudx\alibigfish\SendSmsApi');
+            return $app->make(SendSmsApi::class);
         });
     }
 

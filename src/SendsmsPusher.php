@@ -1,4 +1,5 @@
 <?php
+
 namespace iscms\Alisms;
 
 use Illuminate\Support\Facades\Auth;
@@ -8,7 +9,7 @@ use iscms\AlismsSdk\TopClient;
 class SendsmsPusher implements SendSmsApi
 {
 
-    private $TopClient,$name,$content,$phone,$code;
+    private $TopClient, $name, $content, $phone, $code;
 
     /**
      * 注入框架
@@ -23,6 +24,7 @@ class SendsmsPusher implements SendSmsApi
         $this->TopClient->format = "json";
         $this->TopClient->simplify = true;
     }
+
     /**
      * @param $phone 接收人手机号码
      * @param $name  短信签名,可以在阿里大鱼的管理中心看到
@@ -30,14 +32,15 @@ class SendsmsPusher implements SendSmsApi
      * @param $code 短信模板编号 exp:SMS_4955428 在阿里大鱼里找
      * @return
      */
-    public function send($phone,$name, $content, $code)
+    public function send($phone, $name, $content, $code)
     {
-        $send_data=(object)(
-            ['phone'=>$phone,
-            'name'=>$name,
-            'content'=>$content,
-            'code'=>$code
-            ]
+        $send_data = (object)(
+        [
+            'phone' => $phone,
+            'name' => $name,
+            'content' => $content,
+            'code' => $code
+        ]
         );
         return $this->push($send_data);
     }
@@ -51,10 +54,9 @@ class SendsmsPusher implements SendSmsApi
     {
         $req = new AlibabaAliqinFcSmsNumSendRequest();
 
-        if (Auth::check())
-        {
+        if (Auth::check()) {
             $req->setExtend(Auth::User()->id);
-        }else{
+        } else {
             $req->setExtend(0);
         }
         $req->setSmsType("normal");
