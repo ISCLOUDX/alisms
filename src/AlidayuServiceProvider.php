@@ -1,6 +1,9 @@
 <?php
+
 namespace iscms\Alisms;
+
 use Illuminate\Support\ServiceProvider;
+
 class AlidayuServiceProvider extends ServiceProvider
 {
     /**
